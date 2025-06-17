@@ -1,0 +1,19 @@
+stages:
+  - init
+  - plan
+  - apply
+
+terraform-init:
+  stage: init
+  script:
+    - terraform init
+
+terraform-plan:
+  stage: plan
+  script:
+    - terraform plan
+
+terraform-apply:
+  stage: apply
+  script:
+    - terraform apply -auto-approve
