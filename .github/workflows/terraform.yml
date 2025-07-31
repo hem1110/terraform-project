@@ -26,13 +26,14 @@ jobs:
         run: terraform init
 
       - name: Terraform Plan
-        run: terraform plan \
-          -var="client_id=${{ secrets.ARM_CLIENT_ID }}" \
-          -var="client_secret=${{ secrets.ARM_CLIENT_SECRET }}" \
-          -var="subscription_id=${{ secrets.ARM_SUBSCRIPTION_ID }}" \
-          -var="tenant_id=${{ secrets.ARM_TENANT_ID }}" \
-          -var="location=East US" \
-          -var="rg_name=my-resource-group"
+        run: |
+          terraform plan \
+            -var="client_id=${{ secrets.ARM_CLIENT_ID }}" \
+            -var="client_secret=${{ secrets.ARM_CLIENT_SECRET }}" \
+            -var="subscription_id=${{ secrets.ARM_SUBSCRIPTION_ID }}" \
+            -var="tenant_id=${{ secrets.ARM_TENANT_ID }}" \
+            -var="location=East US" \
+            -var="rg_name=my-resource-group"
 
       - name: Terraform Apply or Destroy
         run: |
